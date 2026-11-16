@@ -17,7 +17,7 @@ print(f"Embedding {len(records)} chunks...")
 
 response = client.models.embed_content(
     model="gemini-embedding-001",
-    contents=[r["text"] for r in records],
+    contents=[f"Source: {r['source']}\n{r['text']}" for r in records],
     config=types.EmbedContentConfig(task_type="RETRIEVAL_DOCUMENT"),
 )
 
